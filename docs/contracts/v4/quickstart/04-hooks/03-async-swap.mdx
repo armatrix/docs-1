@@ -80,7 +80,7 @@ contract AsyncSwapHook is BaseHook {
             return (BaseHook.beforeSwap.selector, toBeforeSwapDelta(amountTaken.toInt128(), 0), 0);
         }
         else {
-            return (BaseHook.beforeSwap.selector, BeforeSwapDeltaLibrary.ZERO, 0);
+            return (BaseHook.beforeSwap.selector, BeforeSwapDeltaLibrary.ZERO_DELTA, 0);
         }
 
     }
@@ -124,7 +124,7 @@ contract AsyncSwapTest is Test, Deployers {
         // user paid token0
         assertEq(balance0Before - balance0After, 1e18);
 
-        // user did not recieve token1 (AsyncSwap)
+        // user did not receieve token1 (AsyncSwap)
         assertEq(balance1Before, balance1After);
     }
 }
